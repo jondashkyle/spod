@@ -24,6 +24,7 @@ function serve (opts) {
   })
    
   var server = http.createServer((req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*')
     serve(req, res, fh(req, res))
   })
 

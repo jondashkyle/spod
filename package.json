@@ -1,6 +1,6 @@
 {
   "name": "spod",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "source/index.js",
   "bin": "source/index.js",

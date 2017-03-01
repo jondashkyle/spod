@@ -65,3 +65,4 @@ the idea is to separate the site and the content. with a simple enough taxonomy 
 - testing
 - clean up entry methods
 - use args for watch to use server, port, etc…
+- add arg for including markdown text or not in the json
