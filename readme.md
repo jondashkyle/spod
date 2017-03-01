@@ -1,6 +1,8 @@
 # spod (spit out data)
 a little cli for spitting out data about a flat directory containing some json and markdown.
 
+`npm i spod -g`
+
 ## example
 take a directory of directories
 
@@ -49,13 +51,13 @@ the idea is to separate the site and the content. with a simple enough taxonomy 
 
 ## usage
 
-### `log add [dirname]`
+### `spod add [dirname]`
 - add/update entry to the log data
 
-### `log remove [dirname]`
+### `spod remove [dirname]`
 - remove from the log data
 
-### `log watch`
+### `spod watch`
 - watch added entries for changes and write to the log.
 - spins up a local server at port `3000` to access `/data.json`
 
