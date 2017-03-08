@@ -11,21 +11,19 @@ function getDirName (dir) {
 
 function getData (dir) {
   var entry = pj(process.cwd(), dir)
-  return dir ? {
-    json: pj(entry, 'data.json'),
-    md: pj(entry, 'text.md')
-  } : false
+  return dir
+    ? {
+        json: pj(entry, 'data.json'),
+        md: pj(entry, 'text.md')
+      }
+    : false
 }
 
 function entryExists (json, md) {
   return new promise((resolve, reject) => {
-    return promise
-      .all([
-        fse.stat(json),
-        fse.stat(md)
-      ])
-      .then(resolve)
-      .catch(err => reject('data/text does not exist'))
+    return fse.existsSync(json)
+      ? resolve()
+      : reject('data does not exist')
   })
 }
 
@@ -33,14 +31,15 @@ function loadEntry (dir, json, md) {
   return new promise((resolve, reject) => {
     return promise
       .all([
-        fse.readJson(json),
-        fse.readFile(md, 'utf8')
+        fse.existsSync(json) ?  fse.readJson(json) : { },
+        fse.existsSync(md) ? fse.readFile(md, 'utf8') : ''
       ])
       .then(data => {
-        return resolve(x({
+        var result = x({
           path: dir,
           text: data[1]
-        }, data[0]))
+        }, data[0])
+        return resolve(result)
       })
       .catch(() => reject('unable to load data/text'))
   })
@@ -81,7 +80,7 @@ function saveEntry (mod) {
     .then(() => loadEntry(dir, data.json, data.md))
     .then(data => mergeData(dir, data))
     .then(data => writeData(data))
-    .catch(data => console.warn(data))
+    .catch(data => console.wrn(data))
 }
 
 function removeEntry (mod) {
