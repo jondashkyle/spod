@@ -45,9 +45,11 @@ which looks like this
 }
 ```
 
-i’m using this to create a psuedo-api of content which is hosted on github pages. i then made a seperate stateful app which loads the data.json and can pull in any assets based off the directory name.
+i’m using this to create a psuedo-api of content which is hosted on github pages. i then made a separate stateful app which loads the data.json and can pull in any assets based off the directory name.
 
 the idea is to separate the site and the content. with a simple enough taxonomy i can re-use this structure across versions of my personal site. pretty highly specific, but, yeah.
+
+somewhat related is [json feed](https://jsonfeed.org/version/1), although this follows a different formatting convention (perhaps this should be unified?)
 
 ## usage
 
